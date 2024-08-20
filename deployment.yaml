@@ -32,6 +32,6 @@ spec:
     spec:
       containers:
         - name: api-server
-          image: hdeok/kaniko-api-server:v1.0.2
+          image: nginx:1.14.2
           ports:
             - containerPort: 8080    
