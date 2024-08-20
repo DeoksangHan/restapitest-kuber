@@ -6,7 +6,7 @@ metadata:
     name: api-server
 spec:
   ports:
-  - port: 9001
+  - port: 9011
     protocol: TCP
   selector:           
     app: api-server
@@ -31,4 +31,4 @@ spec:
         - name: api-server
           image: nginx:1.14.2
           ports:
-            - containerPort: 8080    
+            - containerPort: 9010    
