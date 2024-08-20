@@ -1,0 +1,37 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: api-server
+  labels:
+    name: api-server
+spec:
+  ports:
+    - nodePort: 30164 
+      port: 8080      
+      targetPort: 8080  
+      protocol: TCP
+  selector:           
+    app: api-server
+  type: NodePort       
+
+---
+apiVersion: apps/v1 
+kind: Deployment    
+metadata:              
+  namespace: test
+  name: api-server
+spec:                
+  selector:         
+    matchLabels:
+      app: api-server
+  replicas: 1        
+  template:
+    metadata:
+      labels:        
+        app: api-server
+    spec:
+      containers:
+        - name: api-server
+          image: hdeok/kaniko-api-server:v1.0.2
+          ports:
+            - containerPort: 8080    
